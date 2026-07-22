@@ -1,0 +1,129 @@
+{
+  "gateway": {
+    "mode": "local",
+    "port": 18789,
+    "bind": "loopback",
+    "auth": {
+      "mode": "token",
+      "token": "<GENERATE_A_RANDOM_LOCAL_TOKEN>"
+    }
+  },
+  "agents": {
+    "defaults": {
+      "workspace": "C:\\Users\\YOUR_NAME\\.openclaw\\workspace",
+      "model": {
+        "primary": "stepfun-plan/step-3.7-flash"
+      }
+    },
+    "list": [
+      {
+        "id": "main",
+        "model": "stepfun-plan/step-3.7-flash",
+        "subagents": {
+          "allowAgents": ["main", "health", "study", "study-critic"]
+        }
+      },
+      {
+        "id": "health",
+        "name": "health",
+        "workspace": "C:\\Users\\YOUR_NAME\\.openclaw\\workspace-health",
+        "model": "stepfun-plan/step-3.7-flash"
+      },
+      {
+        "id": "study",
+        "name": "study",
+        "workspace": "C:\\Users\\YOUR_NAME\\.openclaw\\workspace-study",
+        "model": "stepfun-plan/step-3.7-flash",
+        "identity": {
+          "name": "创新研究员 A",
+          "emoji": "📚",
+          "theme": "research-innovator"
+        }
+      },
+      {
+        "id": "study-critic",
+        "name": "study-critic",
+        "workspace": "C:\\Users\\YOUR_NAME\\.openclaw\\workspace-study-critic",
+        "model": "stepfun-plan/step-3.7-flash",
+        "identity": {
+          "name": "创新研究员 B",
+          "emoji": "🔬",
+          "theme": "research-competitor"
+        }
+      }
+    ]
+  },
+  "channels": {
+    "feishu": {
+      "enabled": true,
+      "connectionMode": "websocket",
+      "domain": "feishu",
+      "streaming": false,
+      "renderMode": "raw",
+      "defaultAccount": "main",
+      "accounts": {
+        "main": {
+          "enabled": true,
+          "appId": "<FEISHU_MAIN_APP_ID>",
+          "appSecret": "<FEISHU_MAIN_APP_SECRET>",
+          "requireMention": false
+        },
+        "health": {
+          "enabled": true,
+          "appId": "<FEISHU_HEALTH_APP_ID>",
+          "appSecret": "<FEISHU_HEALTH_APP_SECRET>",
+          "requireMention": true
+        },
+        "study": {
+          "enabled": true,
+          "appId": "<FEISHU_STUDY_APP_ID>",
+          "appSecret": "<FEISHU_STUDY_APP_SECRET>",
+          "requireMention": true
+        },
+        "study2": {
+          "enabled": true,
+          "appId": "<FEISHU_STUDY2_APP_ID>",
+          "appSecret": "<FEISHU_STUDY2_APP_SECRET>",
+          "requireMention": true
+        }
+      }
+    }
+  },
+  "bindings": [
+    {
+      "type": "route",
+      "agentId": "main",
+      "match": { "channel": "feishu", "accountId": "main" }
+    },
+    {
+      "type": "route",
+      "agentId": "health",
+      "match": { "channel": "feishu", "accountId": "health" }
+    },
+    {
+      "type": "route",
+      "agentId": "study",
+      "match": { "channel": "feishu", "accountId": "study" }
+    },
+    {
+      "type": "route",
+      "agentId": "study-critic",
+      "match": { "channel": "feishu", "accountId": "study2" }
+    }
+  ],
+  "plugins": {
+    "allow": ["acpx", "feishu", "stepfun", "desktop-notify-tools"],
+    "entries": {
+      "acpx": { "enabled": true },
+      "feishu": { "enabled": true },
+      "stepfun": { "enabled": true },
+      "desktop-notify-tools": {
+        "enabled": true,
+        "config": {
+          "cooldownSeconds": 60,
+          "defaultDurationSeconds": 8
+        }
+      }
+    }
+  }
+}

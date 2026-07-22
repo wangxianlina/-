@@ -1,0 +1,16 @@
+{
+  "id": "desktop-notify-tools",
+  "name": "Desktop Notify Tools",
+  "description": "Show a short Windows desktop reminder popup.",
+  "version": "0.1.0",
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "cooldownSeconds": { "type": "number", "minimum": 0, "maximum": 86400 },
+      "defaultDurationSeconds": { "type": "number", "minimum": 3, "maximum": 30 }
+    },
+    "additionalProperties": false
+  },
+  "activation": { "onStartup": true },
+  "contracts": { "tools": ["butler_desktop_notify"] }
+}
