@@ -1,5 +1,7 @@
 # 部署说明
 
+> DGX Spark本地模型部署请直接阅读[`DGX_SPARK_STEP37_GGUF_DEPLOYMENT.md`](DGX_SPARK_STEP37_GGUF_DEPLOYMENT.md)。该文档包含Step-3.7-Flash-GGUF下载、GB10 CUDA编译、OpenClaw接入、四Agent共享模型和内存优化的完整命令。
+
 ## 当前部署方式
 
 本地 Windows 计算机运行 OpenClaw Gateway、飞书长连接、Agent 工作区、技能脚本、记忆服务和桌面通知插件。StepFun Step 3.7 Flash通过远程API提供主要模型推理。

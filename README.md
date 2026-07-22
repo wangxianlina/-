@@ -125,6 +125,10 @@ openclaw status
 
 完整步骤见 [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md)。
 
+如需在DGX Spark上完全本地运行StepFun模型，请参阅：
+
+- [`DGX Spark部署Step-3.7-Flash-GGUF与OpenClaw多智能体`](docs/DGX_SPARK_STEP37_GGUF_DEPLOYMENT.md)
+
 ## 本地算力与 NVIDIA 规划
 
 当前版本使用本地计算机运行 OpenClaw Gateway、Agent 工作区、技能、论文解析、消息路由和记忆服务，复杂模型推理由 StepFun Step 3.7 Flash 完成。
