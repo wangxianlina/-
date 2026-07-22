@@ -1,0 +1,48 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+openclaw.json
+credentials/
+identity/
+devices/
+**/auth-profiles.json
+**/*secret*
+**/*token*
+
+# OpenClaw runtime data
+agents/*/sessions/
+logs/
+media/
+backups/
+state/
+vector-memory/
+memory/
+realtime-input/
+workspace-attestations/
+*.bak
+*.last-good
+*.rejected.*
+
+# Dependencies and build output
+node_modules/
+dist/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# IDE and OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Research output and temporary files
+outputs/
+tmp_*
+*.log
+*.png
+*.jpg
+*.jpeg
+*.webp
